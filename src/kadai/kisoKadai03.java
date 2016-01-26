@@ -50,15 +50,15 @@ public class kisoKadai03 {
 	}
 
 	public static void memo(String[] args) throws IOException {
-		 InputStreamReader is = new InputStreamReader(System.in);
+		BufferedReader input =
+                new BufferedReader (new InputStreamReader (System.in));
+		System.out.println("ファイルを作ります");
+		System.out.println("保存場所を決めてください＜例＞c:\\Users\\");
+		String fbasy = input.readLine( );
 
-	        System.out.println("ファイル名を入力してください");
-
-
-	        BufferedReader input =
-	                new BufferedReader (new InputStreamReader (System.in));
-	            String fname = input.readLine( );
-		File newfile = new File("C:\\test\\"+fname);
+		System.out.println("ファイル名を入力してください");
+		String fname = input.readLine( );
+		File newfile = new File(fbasy+fname);
 
 	    try{
 	      if (newfile.createNewFile()){
@@ -71,12 +71,18 @@ public class kisoKadai03 {
 	      System.out.println(e);
 	    }
 	  }
+
 	public static void dirm(String[] args) throws IOException {
 		System.out.println("ディレクトリを作ります");
 		BufferedReader input =
                 new BufferedReader (new InputStreamReader (System.in));
-            String dna = input.readLine( );
-            File newfile = new File("c:\\"+dna);
+		System.out.println("保存場所を決めてください＜例＞c:\\Users\\");
+		String mdna = input.readLine( );
+
+		System.out.println("ディレクトリ名を入力してください");
+        String dna = input.readLine( );
+
+            File newfile = new File(mdna+dna);
 
 	    if (newfile.mkdirs()){
 	      System.out.println("ディレクトリの作成に成功しました");
@@ -87,14 +93,18 @@ public class kisoKadai03 {
 
 	public static String Name;
 	public static void miru(String[] args) throws IOException {
-		System.out.println("中を確認します");
 		BufferedReader input =
                 new BufferedReader (new InputStreamReader (System.in));
-			String dna = input.readLine( );
+		System.out.println("ファイルが有るかを確認します");
+		System.out.println("場所を指定してください＜例＞c:\\Users\\");
+		String kdna = input.readLine( );
+
+		System.out.println("ファイルの名前を入力してください");
+		String dna = input.readLine( );
 
 		Name= dna;
 		int flag=0;
-		String path = "C:\\test\\";
+		String path = kdna;
 	    File dir = new File(path);
 	    String[] files = dir.list();
 	    for (int i = 0; i < files.length; i++) {
@@ -115,14 +125,14 @@ public class kisoKadai03 {
 
 	public static void kaku(String args[]){
 		try{
-
-		      File file = new File("C:\\test\\"+Name);
+			BufferedReader input =
+	                new BufferedReader (new InputStreamReader (System.in));
+			System.out.println("場所を指定してください＜例＞c:\\Users\\");
+			String xt = input.readLine( );
+		      File file = new File(xt+Name);
 		      System.out.println("テキストを入力してください");
+		      String text = input.readLine( );
 
-
-		        BufferedReader input =
-		                new BufferedReader (new InputStreamReader (System.in));
-		            String text = input.readLine( );
 		      if (checkBeforeWritefile(file)){
 		        FileWriter filewriter = new FileWriter(file, true);
 
@@ -149,21 +159,21 @@ public class kisoKadai03 {
 		  public static void sabu(String args[]) throws IOException{
 			  while(true){
 				  System.out.println("＜ファイルメニュー＞");
-				  System.out.println("[1]上書き[2]書き込み[3]読み込み[9]戻る");
+				  System.out.println("[1]上書き[2]書き込み[3]表示[9]戻る");
 				  System.out.println("数字で入力してください");
 				  try{
 					 int sabu2 = new Scanner(System.in).nextInt();
 					 if( sabu2==1){
 						 ue(null);
-						 System.out.println("上書き");
+						 System.out.println("--上書きしました--");
 					}if(sabu2==2){
 						 kaku(null);
-						 System.out.println("書き込み");
+						 System.out.println("--書き込みしました--");
 					}if(sabu2==3){
 						 yomu(null);
-						 System.out.println("確認");
+						 System.out.println("--表示しました--");
 					}if(sabu2==9){
-						System.out.println("戻る");
+						System.out.println("--戻る--");
 						main(null);
 					}
 				}catch(Exception ex) {
@@ -174,12 +184,15 @@ public class kisoKadai03 {
 
 	public static void ue(String[] args) {
 	    try{
-
-	      File file = new File("C:\\test\\"+Name);
-	      System.out.println("ファイル上書き込み");
-	      BufferedReader input =
+	    	BufferedReader input =
 	                new BufferedReader (new InputStreamReader (System.in));
-	            String text = input.readLine( );
+	    	System.out.println("場所を指定してください＜例＞c:\\Users\\");
+	    	String ctt = input.readLine( );
+	    	System.out.println("内容を記入してください");
+	    	File file = new File(ctt+Name);
+	      System.out.println("ファイル上書きしました");
+
+	      String text = input.readLine( );
 
 	      if (checkBeforeWritefile(file)){
 	        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
@@ -198,9 +211,11 @@ public class kisoKadai03 {
 
 	public static void yomu(String[] args) {
 	    try{
-
-
-	    	File file = new File("C:\\test\\"+Name);
+	    	BufferedReader kok =
+	                new BufferedReader (new InputStreamReader (System.in));
+	    	System.out.println("今見ている場所を指定してください＜例＞c:\\Users\\");//String kdna;
+	    	String ckok = kok.readLine( );//String kdna;
+	    	File file = new File(ckok+Name);
 		      FileReader filereader = new FileReader(file);
 
 	      int ch;
