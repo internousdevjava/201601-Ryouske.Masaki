@@ -19,26 +19,34 @@ public class kisoKadai03 {
 		int menyu;
 
 		while(true){
-			System.out.println("メインメニュー[1]ファイル新規作成[2]フォルダー新規[3]読み込み[9]終了");
-			 menyu = new Scanner(System.in).nextInt();
-			 if( menyu==1){
-				 memo(null);
-				 System.out.println("新規作成ファイル");
-			 }if(menyu==2){
-				 dirm(null);
-				 System.out.println("新規作成フォルダー");
-			 }if(menyu==3){
-				 miru(null);
-				 System.out.println("読み込み");
+			System.out.println("■メインメニュー■");
+			System.out.println("[1]ファイル新規作成[2]フォルダー新規[3]読み込み[9]終了");
+			System.out.println("数字で入力してください");
 
-			 }if(menyu==9){
+			try{
+			 	menyu = new Scanner(System.in).nextInt();
 
-				 System.out.println("終了");
-				 break;
+				 if( menyu==1){
+					 memo(null);
+					 System.out.println("新規作成ファイル");
+				 }if(menyu==2){
+					 dirm(null);
+					 System.out.println("新規作成フォルダー");
+				 }if(menyu==3){
+					 miru(null);
+					 System.out.println("読み込み");
+
+				 }if(menyu==9){
+
+					 System.out.println("終了");
+					 break;
+				 }
+
+			 }catch(Exception ex) {
+		            System.out.println("数字を入力してください");
 			 }
 
 		}
-
 	}
 
 	public static void memo(String[] args) throws IOException {
@@ -57,6 +65,7 @@ public class kisoKadai03 {
 	        System.out.println("ファイルの作成に成功しました");
 	      }else{
 	        System.out.println("ファイルの作成に失敗しました");
+	        System.out.println("すでに存在している可能性があります");
 	      }
 	    }catch(IOException e){
 	      System.out.println(e);
@@ -139,27 +148,29 @@ public class kisoKadai03 {
 		  }
 		  public static void sabu(String args[]) throws IOException{
 			  while(true){
-				  System.out.println("ファイルメニュー[1]上書き[2]書き込み[3]読み込み[9]戻る");
+				  System.out.println("＜ファイルメニュー＞");
+				  System.out.println("[1]上書き[2]書き込み[3]読み込み[9]戻る");
+				  System.out.println("数字で入力してください");
+				  try{
 					 int sabu2 = new Scanner(System.in).nextInt();
-
 					 if( sabu2==1){
 						 ue(null);
 						 System.out.println("上書き");
-					 }if(sabu2==2){
+					}if(sabu2==2){
 						 kaku(null);
 						 System.out.println("書き込み");
-					 }if(sabu2==3){
+					}if(sabu2==3){
 						 yomu(null);
 						 System.out.println("確認");
-					 }if(sabu2==9){
-						 System.out.println("戻る");
-						 main(null);
-					 }
+					}if(sabu2==9){
+						System.out.println("戻る");
+						main(null);
+					}
+				}catch(Exception ex) {
+		            System.out.println("数字を入力してください");
+		        }
 			  }
 		  }
-
-
-
 
 	public static void ue(String[] args) {
 	    try{
@@ -204,9 +215,6 @@ public class kisoKadai03 {
 	      System.out.println(e);
 	    }
 	  }
-
-
-
 }
 
 
